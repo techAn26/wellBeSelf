@@ -1,0 +1,30 @@
+{
+  "name": "projectbase",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "fix:format": "prettier --write",
+    "fix:lint": "eslint --fix --report-unused-disable-directives",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^20.14.0",
+    "eslint": "^9.4.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react-hooks": "5.1.0-beta-26f2496093-20240514",
+    "eslint-plugin-unused-imports": "^4.0.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
+    "prettier": "^3.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.12.0"
+  }
+}

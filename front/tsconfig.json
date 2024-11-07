@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "module": "esnext",
+    "target": "es6",
+    "lib": ["esnext", "dom"],
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "downlevelIteration": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
+    "allowJs": true,
+    "incremental": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}

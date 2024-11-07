@@ -1,0 +1,165 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SampleAPI",
+    "description": "SampleAPIです。",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "${api_url}"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Applicant"
+    },
+    {
+      "name": "cors"
+    }
+  ],
+  "paths": {
+    "/sample/{sampleId}": {
+      "post": {
+        "tags": [
+          "SampleUser"
+        ],
+        "summary": "Sample",
+        "operationId": "registerSampleUser",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "x-signature",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "sampleId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "applied_on_millis": {
+                    "type": "number"
+                  },
+                  "applicant": {
+                    "type": "object",
+                    "properties": {
+                      "first_name": {
+                        "type": "string"
+                      },
+                      "last_name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "phone_number": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "AWS_PROXY",
+          "uri": "${lambda_invoke_arn}",
+          "responses": {
+            "default": {
+              "statusCode": 200
+            }
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "cors"
+        ],
+        "summary": "Enable CORS by returning correct headers",
+        "operationId": "registerApplicantOptions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "requestTemplates": {
+            "application/json": "{\"statusCode\" : 200}"
+          },
+          "responses": {
+            "default": {
+              "statusCode": 200,
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'${cors_allow_headers}'",
+                "method.response.header.Access-Control-Allow-Methods": "'${cors_allow_methods}'",
+                "method.response.header.Access-Control-Allow-Origin": "'${cors_allow_origin}'"
+              }
+            }
+          },
+          "responseTemplates": {
+            "application/json": "{}"
+          }
+        }
+      }
+    }
+  }
+}

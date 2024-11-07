@@ -1,0 +1,20 @@
+# IDE
+.idea/
+
+# .DS_Store
+.DS_Store
+
+# node, yarn
+node_modules/
+yarn-error.log
+
+# ビルド出力先
+dist/
+
+# テスト時に出力されるファイル
+.test/
+.out/
+.tmp/
+
+# 環境変数設定用
+.env

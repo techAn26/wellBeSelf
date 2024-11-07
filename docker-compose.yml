@@ -1,0 +1,21 @@
+version: '3'
+services:
+  terraform:
+    build:
+      context: ./infra/terraform
+    volumes:
+      - ./infra/terraform/:/terraform/
+      - ~/.aws/:/root/.aws/:ro
+    tty: true
+  mysql:
+    build:
+      context: ./backend/db/mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./backend/db/mysql/conf.d/:/etc/mysql/conf.d/
+      - ./backend/db/mysql/.mysql/:/var/lib/mysql/
+      - ./backend/db/mysql/.sql/:/sql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    tty: true
