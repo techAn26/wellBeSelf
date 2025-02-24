@@ -13,7 +13,7 @@ export const TaskCard = ({ task }: Props) => {
   // const [tasks, setTasks] = useRecoilState(taskListState)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
-  const handleStatusChange = (newStatus: Task['status']) => {
+  const handleStatusChange = (_newStatus: Task['status']) => {
     // const updatedTasks = tasks.map((t) =>
     //   t.id === task.id ? { ...t, status: newStatus } : t
     // )
