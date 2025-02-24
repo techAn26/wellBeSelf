@@ -1,1 +1,1 @@
-export {Home as default} from '../components/pages/index'
+export { Dashboard as default } from '../components/pages/Dashboard'
